@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+
+/* 
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+:root{
+    --base:#FDA703;
+    --bg1:#1D1E22;
+    --bg2:  #2D2E35;
+}
+
+
+*{margin: 0;padding: 0;scroll-behavior: smooth;text-decoration: none;list-style-type: none;box-sizing: border-box;font-family: 'Nunito', sans-serif;transition: 0.2s linear;outline: none;border: none;box-sizing: border-box;}
+body{background:var(--bg2); color: #fff;}
+.btn{
+    color: #fff;
+    background: var(--base);
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+
+.characters,.characters-s{
+    width: 100%;
+    background: var(--bg1);
+    border-radius: 10px;display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+
+.char{
+    width: 100px;
+    position: relative;
+    color: #fff;
+}
+.char img{
+    width: 100%;
+}
+
+.char .name{
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0 , 0.5);
+    text-align: center;
+}
+.char .fav{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: var(--base);
+    padding: 2px;
+    border-radius: 4px;
+}
+
+
+.search-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-transform: capitalize;
+}
+.search-form input{
+    width: 70%;
+    padding: 15px;
+    border-radius: 10px;
+}
+.search-form input:focus{
+    border: #ffdc9b 2px solid;
+}
+.search-form button{
+    padding: 15px;
+    font-size: 1.3rem;
+}
+
+.title-a{
+    color: var(--base);
+    margin: 10px 0px;
+}
+
+.top{
+    padding: 20px 0;
+
+}
