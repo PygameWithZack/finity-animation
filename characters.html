@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/po-up.css">
+    <script src="/char.js" defer></script>
     <title>Characters</title>
 </head>
 <body>
+
+  <div class="character-details">
+
+
+
+    </div>
+</div>
+
     <div class="top">
         <form  class="search-form">
             <input type="text" placeholder="Search character" id="search-char">
@@ -30,76 +39,8 @@
 </div>
 
 
-    <script>
-        function Characters(){
-  
-  // Fetch recommended anime from Jikan API
-  fetch('https://api.jikan.moe/v4/characters')
-  .then(response => response.json())
-  .then(data => {
-    data.data.forEach(anime => {
-        const animeCard = document.createElement('a');
-      animeCard.classList.add('char');
-      animeCard.href = anime.url;
-      animeCard.innerHTML = `
-      
-        <img src="${anime.images.jpg.image_url}" alt="">
-        <p class="name">${anime.name}</p>
-        <p class="fav"><i class='bx bx-heart'></i> ${anime.favorites}</p>
-      
-        `;
-      document.querySelector('.characters').appendChild(animeCard);
-
-    });
-
-  })
-  .catch(error => console.error(error));
-  
-  
-  }  
-
-  function getCharacter(anime){
-// Fetch recommended anime from Jikan API
-fetch('https://api.jikan.moe/v4/characters?q='+anime)
-  .then(response => response.json())
-  .then(data => {
-    document.querySelector('.characters-s').innerHTML = '';
-    // Log the API response to the console
-    console.log(data);
-
-    // Loop through the anime data and create a card for each anime
-    data.data.forEach(character => {
-      const characterCard = document.createElement('a');
-      characterCard.classList.add('char');
-      characterCard.href = character.url;
-      characterCard.innerHTML = `
-        <img src="${character.images.jpg.image_url}" alt="">
-        <p class="name">${character.name}</p>
-        <p class="fav"><i class='bx bx-heart'></i> ${character.favorites}</p>
-      `;
-      document.querySelector('.characters-s').appendChild(characterCard);
-    });
-  })
-  .catch(error => console.error(error));
-  }
-
-  Characters();
-
-
-const Form = document.querySelector('.search-form')
-
-Form.addEventListener('submit'  , e =>{
-    e.preventDefault()
-
-    Char = document.querySelector('#search-char').value;
-
-    getCharacter(Char)
-})
 
 
 
-
-
-</script>
 </body>
 </html>

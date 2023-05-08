@@ -12,7 +12,10 @@ font-family: 'Roboto', sans-serif; */
 
 
 *{margin: 0;padding: 0;scroll-behavior: smooth;text-decoration: none;list-style-type: none;box-sizing: border-box;font-family: 'Nunito', sans-serif;transition: 0.2s linear;outline: none;border: none;box-sizing: border-box;}
-body{background:var(--bg2); color: #fff;}
+body{background:var(--bg2); color: #fff;display: flex;
+flex-direction: column;
+justify-content: center;
+}
 .btn{
     color: #fff;
     background: var(--base);
@@ -39,6 +42,11 @@ body{background:var(--bg2); color: #fff;}
     width: 100px;
     position: relative;
     color: #fff;
+    cursor: pointer;
+    
+}
+.char:hover{
+    transform: rotate(360deg);
 }
 .char img{
     width: 100%;
@@ -89,4 +97,31 @@ body{background:var(--bg2); color: #fff;}
 .top{
     padding: 20px 0;
 
+}
+
+.character-details{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.character-details .card{
+    background: #fff;
+    color: #2D2E35;
+    border-radius: 10px;
+
+    width: 25rem;
+    max-width: 100%;
+    padding: 15px;
+}
+
+.character-details .card .top{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.character-details .card .top img{
+    width: 200px;
 }
