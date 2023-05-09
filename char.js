@@ -1,10 +1,15 @@
+const containerData = document.querySelector('.character-details')
+const closeBtn = document.querySelector('.character-details .card .header bx')
+
+
+
+
 // Define the Characters function to fetch and display anime characters
 function Characters(callback) {
     fetch('https://api.jikan.moe/v4/characters')
       .then(response => response.json())
       .then(data => {
         data.data.forEach(anime => {
-            console.log(anime)
           const animeCard = document.createElement('div');
           animeCard.classList.add('char');
           animeCard.innerHTML = `
@@ -12,6 +17,7 @@ function Characters(callback) {
             <p class="name">${anime.name}</p>
             <p class="fav"><i class='bx bx-heart'></i> ${anime.favorites}</p>
             <div class="card" style="display:none;">
+            <div class="header"><i class='bx bx-left-arrow-circle'></i></div>
               <div class="top">
                 <img src="${anime.images.jpg.image_url}" alt="">
                 <h2 class="name">${anime.name}</h2>    
@@ -31,6 +37,10 @@ function Characters(callback) {
         });
         // Call the callback function after the Characters function has finished
         callback();
+        closeBtn.addEventListener('click' , ()=>{
+          containerData.classList.add('click')
+        })  
+
       });
   }
   
@@ -38,16 +48,19 @@ function Characters(callback) {
   function charData() {
     const char = document.querySelectorAll('.characters .char'), 
     dataContainer = document.querySelector('.character-details')
-
+    
     char.forEach(character => {
         character.addEventListener('click' , () =>{
-            let card = document.createElement('div');
+          containerData.classList.remove('hide')
+            
+          let card = document.createElement('div');
             card.classList.add('card')
             let data = character.querySelector('.card').innerHTML;
             card.innerHTML = data;
-            console.log(card.outerHTML)
             dataContainer.innerHTML = card.outerHTML;
-        })
+
+
+          })
     });
   }
   
@@ -61,7 +74,6 @@ fetch('https://api.jikan.moe/v4/characters?q='+anime)
     .then(data => {
     document.querySelector('.characters-s').innerHTML = '';
     // Log the API response to the console
-    console.log(data);
 
     // Loop through the anime data and create a card for each anime
     data.data.forEach(character => {
@@ -92,7 +104,6 @@ Form.addEventListener('submit'  , e =>{
 
     getCharacter(Char)
 })
-
 
 
 

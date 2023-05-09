@@ -101,6 +101,9 @@ justify-content: center;
 
 }
 
+.character-details.hide{
+    display: none;
+}
 .character-details{
     width:100%;
     display: flex;
@@ -116,13 +119,18 @@ justify-content: center;
     background: var(--bg1);
     border-radius: 10px;
 
-    width: 25rem;
     max-width: 100%;
     padding: 15px;
     height: 100vh;
     overflow-y: scroll;
 }
-
+.character-details .card .header i{
+    cursor: pointer;
+}
+.character-details .card .header{
+    color: var(--base);
+    font-size: 2rem;
+}
 .character-details .card .top{
     display: flex;
     flex-direction: column;
