@@ -1,63 +1,58 @@
-
-window.addEventListener('load' , () =>{
-
-    Characters();
-
-
-})
-
-
-
-
-
-
-
-
-function Characters(){
-    
-    // Fetch recommended anime from Jikan API
+// Define the Characters function to fetch and display anime characters
+function Characters(callback) {
     fetch('https://api.jikan.moe/v4/characters')
-    .then(response => response.json())
-    .then(data => {
-    data.data.forEach(anime => {
-        const animeCard = document.createElement('div');
-        animeCard.classList.add('char');
-        animeCard.innerHTML = `
-        
-        <img src="${anime.images.jpg.image_url}" alt="">
-        <p class="name">${anime.name}</p>
-        <p class="fav"><i class='bx bx-heart'></i> ${anime.favorites}</p>
+      .then(response => response.json())
+      .then(data => {
+        data.data.forEach(anime => {
+            console.log(anime)
+          const animeCard = document.createElement('div');
+          animeCard.classList.add('char');
+          animeCard.innerHTML = `
+            <img src="${anime.images.jpg.image_url}" alt="">
+            <p class="name">${anime.name}</p>
+            <p class="fav"><i class='bx bx-heart'></i> ${anime.favorites}</p>
+            <div class="card" style="display:none;">
+              <div class="top">
+                <img src="${anime.images.jpg.image_url}" alt="">
+                <h2 class="name">${anime.name}</h2>    
+              </div>
+              <div class="mid">
+                <p class="kanji">Name_kanji : ${anime.name_kanji} </p>
+                <p class="fav">favorites : ${anime.favorites}</p>
+                <p class="nicknames">Nicknames :  ${anime.nicknames}</p>
+              </div>
+              <h2 class="about">About : </h2>
+              <p class="info">
+                ${anime.about}
+              </p>
+            </div>
+          `;
+          document.querySelector('.characters').appendChild(animeCard);
+        });
+        // Call the callback function after the Characters function has finished
+        callback();
+      });
+  }
+  
+  // Define the charData function to retrieve and process anime character data
+  function charData() {
+    const char = document.querySelectorAll('.characters .char'), 
+    dataContainer = document.querySelector('.character-details')
 
-        <div class="card" style="display:none;">
-
-        
-<div class="top">
-    <img src="/pain.jpg" alt="">
-    <h2 class="name">${anime.name}</h2>    
-</div>
-
-<div class="mid">
-
-    <p class="kanji">Name_kanji : ${anime.name_kanji} </p>
-    <p class="fav">favorites : ${anime.favorites}</p>
-    <p class="nicknames">Nicknames :  ${anime.nicknames}</p>
-</div>
-
-<h2 class="about">About : </h2>
-<p class="info">
-    ${anime.about}
-</p>
-
-        `;
-        document.querySelector('.characters').appendChild(animeCard);
-
+    char.forEach(character => {
+        character.addEventListener('click' , () =>{
+            let card = document.createElement('div');
+            card.classList.add('card')
+            let data = character.querySelector('.card').innerHTML;
+            card.innerHTML = data;
+            console.log(card.outerHTML)
+            dataContainer.innerHTML = card.outerHTML;
+        })
     });
-
-    })
-    .catch(error => console.error(error));
-    
-    return true
-    }  
+  }
+  
+  // Call the Characters function with the charData function as a callback
+  Characters(charData);
 
     function getCharacter(anime){
 // Fetch recommended anime from Jikan API
@@ -99,4 +94,6 @@ Form.addEventListener('submit'  , e =>{
 })
 
 
-console.log(document.querySelector('.characters'))
+
+
+
