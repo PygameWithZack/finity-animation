@@ -1,40 +1,8 @@
 const SearchInput = document.querySelector('#search-anime'),
 SearchForm = document.querySelector('.search-form')
 
-window.addEventListener('load' , scrollFinity())
 
 
-function scrollFinity(){
-  // Initialize Swiper
-var swiper = new Swiper('.swiper-container', {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false
-  },
-});
-var swiper = new Swiper('.swiper-container1', {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false
-  },
-});
-var swiper = new Swiper('.swiper-container-search', {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  loop: true,
-  autoplay: {
-    delay: 1000,
-    disableOnInteraction: false
-  },
-});
-
-}
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -158,4 +126,30 @@ fetch(url )
 
 
 
-scrollFinity()
+var swiper = new Swiper('.swiper-container', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false
+  },
+});
+var swiper = new Swiper('.swiper-container1', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false
+  },
+});
+var swiper = new Swiper('.swiper-container-search', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false
+  },
+});
